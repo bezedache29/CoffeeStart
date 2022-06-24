@@ -87,6 +87,63 @@ export default function Main({ navigation }) {
     return <Companies item={item} index={index} />
   }
 
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: 'white'
+    },
+    header: {
+      flex: 1,
+      flexDirection: 'row',
+      width: '100%',
+      marginTop: 15
+    },
+    tabs: {
+      flex: index !== 1 ? 3 : 5
+    },
+    footer: {
+      flex: 2
+    },
+    tabBar: {
+      flexDirection: 'row',
+      paddingTop: Constants.statusBarHeight,
+    },
+    tabItem: {
+      flex: 1,
+      alignItems: 'center',
+      padding: 16,
+      backgroundColor: '#1f3629',
+    },
+    textTab: {
+      color: 'white'
+    },
+    imageContainer: {
+      flex: 1,
+      width: '40%',
+    },
+    logo: {
+      flex: 1,
+      width: null,
+      height: null,
+      resizeMode: 'contain',
+    },
+    titleContainer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '60%',
+    },
+    title: {
+      fontSize: 28,
+      lineHeight: 55,
+      textDecorationLine: 'underline',
+      color: primary,
+      fontFamily: 'PottaOne',
+    },
+    carousel: {
+      marginVertical: 10
+    },
+  })
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -107,81 +164,28 @@ export default function Main({ navigation }) {
           renderTabBar={renderTabBar}
           onIndexChange={handleIndexChange}
           initialLayout={{ width: layout.width }}
+          swipeEnabled={false}
         />
       </View>
 
-      <View style={styles.footer}>
-        <Text style={[subTitle, { paddingBottom: 0, paddingTop: 20 }]}>Nos petits coins de plaisir</Text>
-        <Carousel
-          style={styles.carousel}
-          data={carouselItems}
-          renderItem={renderItemCarousel}
-          itemWidth={0.7 * windowWidth}
-          inActiveOpacity={0.3}
-          containerWidth={windowWidth}
-          onScrollEnd={handleCarouselScrollEnd}
-          ref={carouselRef}
-        />
-      </View>
+      { index !== 1 && (
+        <View style={styles.footer}>
+          <Text style={[subTitle, { paddingBottom: 0, paddingTop: 20 }]}>Nos petits coins de plaisir</Text>
+          <Carousel
+            style={styles.carousel}
+            data={carouselItems}
+            renderItem={renderItemCarousel}
+            itemWidth={0.7 * windowWidth}
+            inActiveOpacity={0.3}
+            containerWidth={windowWidth}
+            onScrollEnd={handleCarouselScrollEnd}
+            ref={carouselRef}
+          />
+        </View>
+      )}
+      
      
     </SafeAreaView>
    
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white'
-  },
-  header: {
-    flex: 1,
-    flexDirection: 'row',
-    width: '100%',
-    marginTop: 15
-  },
-  tabs: {
-    flex: 3
-  },
-  footer: {
-    flex: 2
-  },
-  tabBar: {
-    flexDirection: 'row',
-    paddingTop: Constants.statusBarHeight,
-  },
-  tabItem: {
-    flex: 1,
-    alignItems: 'center',
-    padding: 16,
-    backgroundColor: '#1f3629',
-  },
-  textTab: {
-    color: 'white'
-  },
-  imageContainer: {
-    flex: 1,
-    width: '40%',
-  },
-  logo: {
-    flex: 1,
-    width: null,
-    height: null,
-    resizeMode: 'contain',
-  },
-  titleContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '60%',
-  },
-  title: {
-    fontSize: 28,
-    lineHeight: 55,
-    textDecorationLine: 'underline',
-    color: primary,
-    fontFamily: 'PottaOne',
-  },
-  carousel: {
-    marginVertical: 10
-  },
-})

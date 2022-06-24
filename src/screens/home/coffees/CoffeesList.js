@@ -10,6 +10,7 @@ const list = [
     description: "L'intensité de notre espresso rencontre la douceur du lait chauffé à la vapeur, le tout recouvert d'une fine couche de mousse de lait.",
     advice: 4.2,
     totalAdvice: 1400,
+    price: 4.90,
     image: require('../../../../assets/images/coffees/Caffe_Latte.jpg'),
     nutrition: [
       {
@@ -31,6 +32,7 @@ const list = [
     description: "Prenez la première de nombreuses gorgées. Froid, rafraîchissant et délicieux. À déguster chaque fois que vous en avez envie",
     advice: 4.7,
     totalAdvice: 1700,
+    price: 5.10,
     image: require('../../../../assets/images/coffees/Caramel_Macchiato.jpg'),
     nutrition: [
       {
@@ -52,6 +54,7 @@ const list = [
     description: "Notre café Cold Brew mélangé avec du lait.",
     advice: 3.9,
     totalAdvice: 1800,
+    price: 4.50,
     image: require('../../../../assets/images/coffees/Cold_Brew_Latte.jpg'),
     nutrition: [
       {
@@ -73,6 +76,7 @@ const list = [
     description: "Café dans lequel on ajoute une mousse de lait délicate, ce qui donne une harmonie parfaite entre la douceur du lait et le goût de café",
     advice: 4.5,
     totalAdvice: 700,
+    price: 2.90,
     image: require('../../../../assets/images/coffees/Iced_Cappuccino.jpg'),
     nutrition: [
       {
@@ -94,6 +98,7 @@ const list = [
     description: "Le latte macchiato qui signifie lait taché en italien, est une sorte d’alternative au cappuccino. Il est composé de lait entier chaud, d’une mousse onctueuse et de café. Le résultat est magique, des couches superposées donnant lieu à un dégradé de couleur qui appelle à la gourmandise.",
     advice: 3.9,
     totalAdvice: 580,
+    price: 2.60,
     image: require('../../../../assets/images/coffees/Latte_Macchiato.jpg'),
     nutrition: [
       {
