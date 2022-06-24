@@ -8,28 +8,11 @@ import { primary, secondary, subTitle } from '../../assets/styles/global';
 // import Carousel from 'react-native-snap-carousel';
 import Carousel from 'react-native-anchor-carousel';
 import Companies from './home/companies/Companies';
+import useFirestore from '../hooks/useFirestore';
 
 const {width: windowWidth} = Dimensions.get('window');
 
 const logo = require('../../assets/images/Coffee-circle.png')
-
-const carouselItems = [
-  {
-    title: "Aenean leo",
-    body: "Ut tincidunt tincidunt erat. Sed cursus turpis vitae tortor. Quisque malesuada placerat nisl. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.",
-    imgUrl: "https://picsum.photos/id/11/200/300",
-  },
-  {
-    title: "In turpis",
-    body: "Aenean ut eros et nisl sagittis vestibulum. Donec posuere vulputate arcu. Proin faucibus arcu quis ante. Curabitur at lacus ac velit ornare lobortis. ",
-    imgUrl: "https://picsum.photos/id/10/200/300",
-  },
-  {
-    title: "Lorem Ipsum",
-    body: "Phasellus ullamcorper ipsum rutrum nunc. Nullam quis ante. Etiam ultricies nisi vel augue. Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc.",
-    imgUrl: "https://picsum.photos/id/12/200/300",
-  },
-]
 
 const renderScene = SceneMap({
   first: CoffeesList,
@@ -38,10 +21,22 @@ const renderScene = SceneMap({
 
 const INITIAL_INDEX = 0;
 
-export default function Main({ navigation }) {
+export default function Main() {
 
   const carouselRef = React.useRef(null);
   const [currentIndex, setCurrentIndex] = React.useState(INITIAL_INDEX);
+  const [companies, setCompanies] = React.useState([])
+
+  const { searchCollection } = useFirestore()
+
+  React.useEffect(() => {
+    searchCompanies()
+  }, [])
+
+  const searchCompanies = async () => {
+    const companies = await searchCollection('companies')
+    setCompanies(companies)
+  }
 
   function handleCarouselScrollEnd(item, index) {
     setCurrentIndex(index);
@@ -168,12 +163,12 @@ export default function Main({ navigation }) {
         />
       </View>
 
-      { index !== 1 && (
+      { index !== 1 && companies && companies.length > 0 && (
         <View style={styles.footer}>
           <Text style={[subTitle, { paddingBottom: 0, paddingTop: 20 }]}>Nos petits coins de plaisir</Text>
           <Carousel
             style={styles.carousel}
-            data={carouselItems}
+            data={companies}
             renderItem={renderItemCarousel}
             itemWidth={0.7 * windowWidth}
             inActiveOpacity={0.3}

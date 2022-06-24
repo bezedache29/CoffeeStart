@@ -4,12 +4,13 @@ import { primary, textColor } from '../../../../../assets/styles/global'
 import { AntDesign } from '@expo/vector-icons'; 
 
 export default function CoffeeRender({ coffee }) {
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <Image 
           style={styles.image}
-          source={coffee.image}
+          source={{ uri: coffee.image }}
         />
       </View>
       <View style={styles.textsContainer}>

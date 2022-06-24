@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function Companies({ item, index }) {
 
-  const { imgUrl, title, body } = item;
+  const { imgUrl, name, address, city, zipCode } = item;
 
   return (
     <TouchableOpacity
@@ -15,8 +15,9 @@ export default function Companies({ item, index }) {
       }}>
       <ImageBackground source={{uri: imgUrl}} style={styles.imageBackground} imageStyle={styles.imageStyleBackground}>
         <View style={styles.textContainer}>
-          <Text style={styles.titleText}>{title}</Text>
-          <Text style={styles.contentText}>{body}</Text>
+          <Text style={styles.titleText}>{name}</Text>
+          <Text style={styles.contentText}>{address}</Text>
+          <Text style={styles.city}>{zipCode} {city}</Text>
         </View>
       </ImageBackground>
     </TouchableOpacity>
@@ -44,7 +45,8 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     padding: 10,
-    marginTop: 'auto'
+    marginTop: 'auto',
+    backgroundColor: 'rgba(242, 242, 242, 0.40)'
   },
   titleText: {
     fontWeight: 'bold',
@@ -54,4 +56,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 12,
   },
+  city: {
+    fontSize: 15,
+    fontWeight: 'bold',
+  }
 })
