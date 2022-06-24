@@ -1,11 +1,14 @@
-import { View, StyleSheet, FlatList, Text } from 'react-native'
+import { View, StyleSheet, FlatList, Text, Pressable } from 'react-native'
 import React, { useCallback, useEffect, useState } from 'react'
 import CoffeeRender from './components/CoffeeRender';
 import { subTitle } from '../../../../assets/styles/global'
 import useFirestore from '../../../hooks/useFirestore';
 import { ActivityIndicator } from 'react-native-web';
+import { useNavigation } from '@react-navigation/native';
 
 export default function CoffeesList() {
+
+  const navigation = useNavigation()
 
   const [coffees, setCoffees] = useState([])
   const [refreshing, setRefreshing] = useState(false)
@@ -22,7 +25,15 @@ export default function CoffeesList() {
   }
 
   const renderItem = ({ item }) => {
-    return <CoffeeRender coffee={item} />
+    return (
+      <Pressable onPress={() => goToCoffeeDetails(item)}>
+        <CoffeeRender coffee={item} />
+      </Pressable>
+    )
+  }
+
+  const goToCoffeeDetails = (item) => {
+    navigation.navigate('coffee-details', {coffee: item})
   }
 
   const onRefresh = useCallback(() => {

@@ -16,6 +16,7 @@
     "@react-native-masked-view/masked-view": "0.2.6",
     "@react-navigation/drawer": "^6.4.1",
     "@react-navigation/native": "^6.0.10",
+    "@react-navigation/native-stack": "^6.6.2",
     "@react-navigation/stack": "^6.2.1",
     "@types/react-native-snap-carousel": "^3.8.5",
     "easy-peasy": "^5.0.4",

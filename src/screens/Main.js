@@ -21,7 +21,7 @@ const renderScene = SceneMap({
 
 const INITIAL_INDEX = 0;
 
-export default function Main() {
+export default function Main({ navigation }) {
 
   const carouselRef = React.useRef(null);
   const [currentIndex, setCurrentIndex] = React.useState(INITIAL_INDEX);
